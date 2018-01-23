@@ -1,0 +1,17 @@
+@import url("~bootstrap/dist/css/bootstrap.css");
+@import url("~codemirror/lib/codemirror.css");
+
+html, body {
+  font-size: 15px;
+  height: 100%;
+  min-height: 500px;
+  min-width: 700px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+

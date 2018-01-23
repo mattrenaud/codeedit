@@ -1,0 +1,39 @@
+{
+  "name": "codeedit",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "codemirror": "^5.33.0",
+    "firebase": "^4.9.0",
+    "jquery": "^3.3.1",
+    "lodash.debounce": "^4.0.8",
+    "lodash.pick": "^4.4.0",
+    "lodash.throttle": "^4.1.1",
+    "popper.js": "^1.13.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-scripts": "1.1.0",
+    "redux": "^3.7.2",
+    "sweetalert": "^2.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "firebase-tools": "^3.17.3",
+    "generact": "^0.3.1",
+    "prettier": "^1.10.2",
+    "prettier-eslint": "^8.8.1",
+    "prettier-eslint-cli": "^4.7.0"
+  }
+}
