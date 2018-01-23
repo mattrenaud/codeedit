@@ -1,4 +1,5 @@
-
 .Nav {
-  border-bottom: 1px solid #C8C8C8;
+  border-bottom: 1px solid #c8c8c8;
+  padding-left: 25px;
+  height: 90px;
 }

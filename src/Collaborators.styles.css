@@ -1,5 +1,4 @@
-
-
-.Collaborators select[name=collaborators] {
+.Collaborators select[name="collaborators"] {
   max-height: 150px;
+  pointer-events: none;
 }

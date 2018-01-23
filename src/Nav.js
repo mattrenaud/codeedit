@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
-import './Nav.css';
+import React from "react";
+import "./Nav.css";
 
-class Nav extends Component {
-  render() {
-    return (
-      <nav className="Nav bg-light text-dark p-3">
-        <span className="h4">
-          CodeEdit
-        </span>
-      </nav>
-    );
-  }
-}
+const Nav = () => (
+  <nav className="Nav bg-light text-dark d-flex align-items-center">
+    <div class="d-flex flex-column">
+      <img alt="logo" className="logo mb-1" src="/logo.png" />
+      <span className="catch-phrase text-muted text-center font-weight-bold">
+        simple collaborative code editing
+      </span>
+    </div>
+  </nav>
+);
 
 export default Nav;

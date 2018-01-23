@@ -1,7 +1,9 @@
 @import url("~bootstrap/dist/css/bootstrap.css");
 @import url("~codemirror/lib/codemirror.css");
+@import url("~codemirror/theme/xq-light.css");
 
-html, body {
+html,
+body {
   font-size: 15px;
   height: 100%;
   min-height: 500px;
@@ -14,4 +16,6 @@ body {
   font-family: sans-serif;
 }
 
-
+label {
+  font-weight: bold;
+}
