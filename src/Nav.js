@@ -6,7 +6,7 @@ class Nav extends Component {
     return (
       <nav className="Nav bg-light text-dark p-3">
         <span className="h4">
-          RTEdit
+          CodeEdit
         </span>
       </nav>
     );

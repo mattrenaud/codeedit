@@ -4,11 +4,9 @@ import { languageSelection } from './Language.state';
 
 import { combineReducers } from 'redux'
 
-const rtedit = combineReducers({
+export default combineReducers({
   contentValue,
   languageSelection,
   collaborators,
   users
 })
-
-export default rtedit
