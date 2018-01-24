@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.0.0",
+    "clipboard": "^1.7.1",
     "codemirror": "^5.33.0",
     "firebase": "^4.9.0",
     "jquery": "^3.3.1",
