@@ -19,3 +19,15 @@ body {
 label {
   font-weight: bold;
 }
+
+.swal-content__input:focus,
+.swal-content__textarea:focus {
+  border-color: #1a7ef0;
+}
+
+.swal-button:focus {
+  background: #1565c0;
+}
+.swal-button {
+  background: #1a7ef0;
+}

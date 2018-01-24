@@ -4,7 +4,7 @@ const { location: { hash: origHash } } = window;
 
 if (
   !origHash ||
-  origHash.length < 3 ||
+  origHash.length < 7 ||
   !/^[a-z0-9]+$/i.test(origHash.slice(1))
 ) {
   window.location.hash = `#${rand()}`;
