@@ -5,7 +5,7 @@ const { location: { pathname: origPath } } = window;
 if (
   !origPath ||
   origPath.length < 7 ||
-  !/^[a-z0-9]+$/i.test(origPath.slice(1))
+  !/^[a-z0-9]+$/.test(origPath.slice(1))
 ) {
   window.location.pathname = `/${rand()}`;
 }
