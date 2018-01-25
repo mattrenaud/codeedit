@@ -1,15 +1,15 @@
 import rand from "./rand";
 
-const { location: { hash: origHash } } = window;
+const { location: { pathname: origPath } } = window;
 
 if (
-  !origHash ||
-  origHash.length < 7 ||
-  !/^[a-z0-9]+$/i.test(origHash.slice(1))
+  !origPath ||
+  origPath.length < 7 ||
+  !/^[a-z0-9]+$/i.test(origPath.slice(1))
 ) {
-  window.location.hash = `#${rand()}`;
+  window.location.pathname = `/${rand()}`;
 }
 
-const { location: { hash: newHash } } = window;
+const { location: { pathname: newPath } } = window;
 
-export default newHash.slice(1);
+export default newPath.slice(1);
