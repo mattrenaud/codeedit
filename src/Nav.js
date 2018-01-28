@@ -16,6 +16,7 @@ class Nav extends Component {
   copyButton = null;
   copyText = null;
   copyLinkWrap = null;
+  sessionId = null;
 
   selectText(element) {
     const selection = window.getSelection();
@@ -26,7 +27,7 @@ class Nav extends Component {
   }
 
   componentDidMount() {
-    // const copyLinkTT = new Tooltip(findDOMNode(this.tooltipHost));
+    $(findDOMNode(this.sessionId)).tooltip();
     $(findDOMNode(this.copyButton)).tooltip({ trigger: "manual" });
     $(findDOMNode(this.copyLinkWrap)).tooltip({
       html: true,
@@ -66,7 +67,16 @@ class Nav extends Component {
             simple collaborative code editing
           </span>
         </a>
-        <label className="ml-auto mb-0">
+        <div
+          className="docid form-control ml-4"
+          data-toggle="tooltip"
+          data-placement="bottom"
+          title="Session ID"
+          ref={ref => (this.sessionId = ref)}
+        >
+          <span>{docId}</span>
+        </div>
+        <label className="ml-auto mb-0 font-weight-bold">
           <span>Session Link:</span>
         </label>
         <div

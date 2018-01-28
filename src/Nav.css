@@ -25,3 +25,8 @@
 .Nav a:hover {
   text-decoration: none;
 }
+.Nav .docid {
+  background-color: rgb(252, 253, 254);
+  color: #5a8fd0;
+  width: auto;
+}
