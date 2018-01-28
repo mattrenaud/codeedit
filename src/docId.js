@@ -2,14 +2,13 @@ import rand from "./rand";
 
 const { location: { pathname: origPath } } = window;
 
-if (
-  !origPath ||
-  origPath.length < 7 ||
-  !/^[a-z0-9]+$/.test(origPath.slice(1))
-) {
-  window.location.pathname = `/${rand()}`;
+let docId = origPath.slice(1);
+
+if (!docId || docId.length < 6 || !/^[a-z0-9]+$/.test(docId)) {
+  docId = rand();
+  setTimeout(() =>
+    window.history.replaceState({}, document.title, `/${docId}`)
+  );
 }
 
-const { location: { pathname: newPath } } = window;
-
-export default newPath.slice(1);
+export default docId;

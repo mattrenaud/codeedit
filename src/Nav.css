@@ -1,5 +1,27 @@
 .Nav {
-  border-bottom: 1px solid #c8c8c8;
-  padding-left: 25px;
+  border-bottom: 1px solid #ced4da;
+  padding: 0 25px;
   height: 90px;
+}
+
+.copylink {
+  font-size: 1rem;
+  /* color: #495057; */
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.copylink svg {
+  height: 1.4rem;
+}
+
+.copylink.input-group {
+  width: auto;
+  border-width: 0px;
+}
+
+.Nav a:hover {
+  text-decoration: none;
 }
