@@ -21,7 +21,7 @@
   },
   "scripts": {
     "lint": "eslint --fix src/**",
-    "format": "prettier --single-quote  --write 'rc/**/*.js'",
+    "format": "prettier --single-quote  --write 'src/**/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
