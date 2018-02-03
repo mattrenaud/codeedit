@@ -1,18 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-import './Language.styles.css';
+import "./Language.styles.css";
 
 const { keys } = Object;
 
 const opts = {
-  JavaScript: 'javascript',
-  HTML: 'htmlmixed',
-  CSS: 'css',
-  SASS: 'sass',
-  Java: 'clike',
-  PHP: 'php'
-}
+  HTML: "htmlmixed",
+  "JavaScript/TypeScript": "javascript",
+  CSS: "css",
+  SASS: "sass",
+  "Java/C#/C++": "clike",
+  PHP: "php"
+};
 
 const Language = ({ onSelect, selection }) => (
   <div className="Language d-flex flex-column">
@@ -21,27 +21,20 @@ const Language = ({ onSelect, selection }) => (
       name="language"
       className="form-control"
       onChange={({ target }) => onSelect(target.value)}
-      value={selection}>
-      {
-        keys(opts)
-          .map(key =>
-            <option key={opts[key]} value={opts[key]}>{key}</option>
-          )
-      }
+      value={selection}
+    >
+      {keys(opts).map(key => (
+        <option key={opts[key]} value={opts[key]}>
+          {key}
+        </option>
+      ))}
     </select>
   </div>
-)
+);
 
 Language.propTypes = {
   onSelect: PropTypes.func.isRequired,
-  selection: PropTypes.string.isRequired,
-}
+  selection: PropTypes.string.isRequired
+};
 
-export default Language
-
-
-
-
-
-
-
+export default Language;
