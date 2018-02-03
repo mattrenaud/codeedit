@@ -1,12 +1,10 @@
 
 const UPDATE_CONTENT_VALUE = 'UPDATE_CONTENT_VALUE';
 
-export const updateContentValue = content => {
-  return {
+export const updateContentValue = content => ({
     type: UPDATE_CONTENT_VALUE,
     content
-  }
-}
+  })
 
 export function contentValue(state = '', action) {
   switch (action.type) {

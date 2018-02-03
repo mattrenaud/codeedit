@@ -1,11 +1,9 @@
 const UPDATE_COLLABORATORS = 'UPDATE_COLLABORATORS';
 
-export const updateCollaborators = collaborators => {
-  return {
+export const updateCollaborators = collaborators => ({
     type: UPDATE_COLLABORATORS,
     collaborators
-  }
-}
+  })
 
 export function collaborators(state = [], action) {
   switch (action.type) {
@@ -18,12 +16,10 @@ export function collaborators(state = [], action) {
 
 const UPDATE_USERS = 'UPDATE_USERS';
 
-export const updateUsers = users => {
-  return {
+export const updateUsers = users => ({
     type: UPDATE_USERS,
     users
-  }
-}
+  })
 
 export function users(state = {}, action) {
   switch (action.type) {
