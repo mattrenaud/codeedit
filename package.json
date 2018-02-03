@@ -20,7 +20,7 @@
     "sweetalert": "^2.1.0"
   },
   "scripts": {
-    "lint": "eslint --fix src/**",
+    "lint-fix": "eslint --fix src/**",
     "format-all": "prettier --single-quote  --write 'src/**/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
