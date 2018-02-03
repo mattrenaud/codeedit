@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { findDOMNode } from "react-dom";
+import React, { Component } from 'react';
+import { findDOMNode } from 'react-dom';
 
-import "./Nav.css";
+import './Nav.css';
 
-import "bootstrap";
-import $ from "jquery";
+import 'bootstrap';
+import $ from 'jquery';
 
-import docId from "./docId";
-import Clipboard from "clipboard";
+import docId from './docId';
+import Clipboard from 'clipboard';
 
-const urlPrefix = "http://codeedit.live/";
+const urlPrefix = 'http://codeedit.live/';
 const url = `${urlPrefix}${docId}`;
 
 class Nav extends Component {
@@ -28,34 +28,34 @@ class Nav extends Component {
 
   componentDidMount() {
     $(findDOMNode(this.sessionId)).tooltip();
-    $(findDOMNode(this.copyButton)).tooltip({ trigger: "manual" });
+    $(findDOMNode(this.copyButton)).tooltip({ trigger: 'manual' });
     $(findDOMNode(this.copyLinkWrap)).tooltip({
       html: true,
-      trigger: "manual"
+      trigger: 'manual'
     });
 
-    new Clipboard(".copylink button", {
+    new Clipboard('.copylink button', {
       text: trigger => {
         setTimeout(() => this.selectText(findDOMNode(this.copyText)));
-        return trigger.getAttribute("aria-label");
+        return trigger.getAttribute('aria-label');
       }
     });
   }
 
   onClickCopy(e) {
-    $(e.currentTarget).tooltip("hide");
-    $(findDOMNode(this.copyLinkWrap)).tooltip("show");
+    $(e.currentTarget).tooltip('hide');
+    $(findDOMNode(this.copyLinkWrap)).tooltip('show');
   }
   mouseEnterCopyButton(e) {
-    $(e.target).tooltip("show");
+    $(e.target).tooltip('show');
   }
   mouseLeaveCopyButton(e) {
-    $(e.target).tooltip("hide");
+    $(e.target).tooltip('hide');
   }
   mouseLeaveWrap(e) {
     //$(e.target).tooltip("hide");
-    console.log("mouseLeaveWrap");
-    $(findDOMNode(this.copyLinkWrap)).tooltip("hide");
+    console.log('mouseLeaveWrap');
+    $(findDOMNode(this.copyLinkWrap)).tooltip('hide');
   }
 
   render() {

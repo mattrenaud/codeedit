@@ -1,6 +1,6 @@
-import React from "react";
-import "./Collaborators.styles.css";
-import PropTypes from "prop-types";
+import React from 'react';
+import './Collaborators.styles.css';
+import PropTypes from 'prop-types';
 
 const Collaborators = ({ names }) => (
   <div className="Collaborators d-flex flex-column">

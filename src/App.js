@@ -1,8 +1,8 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.css';
 
-import Nav from "./Nav";
-import Editor from "./Editor";
+import Nav from './Nav';
+import Editor from './Editor';
 
 const App = () => (
   <div className="App h-100 d-flex flex-column">

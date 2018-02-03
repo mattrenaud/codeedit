@@ -1,4 +1,4 @@
-import rand from "./rand";
+import rand from './rand';
 
 const { location: { pathname: origPath } } = window;
 

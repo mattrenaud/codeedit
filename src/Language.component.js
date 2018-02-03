@@ -1,17 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import "./Language.styles.css";
+import './Language.styles.css';
 
 const { keys } = Object;
 
 const opts = {
-  HTML: "htmlmixed",
-  "JavaScript/TypeScript": "javascript",
-  CSS: "css",
-  SASS: "sass",
-  "Java/C#/C++": "clike",
-  PHP: "php"
+  HTML: 'htmlmixed',
+  'JavaScript/TypeScript': 'javascript',
+  CSS: 'css',
+  SASS: 'sass',
+  'Java/C#/C++': 'clike',
+  PHP: 'php'
 };
 
 const Language = ({ onSelect, selection }) => (

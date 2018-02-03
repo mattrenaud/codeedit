@@ -1,16 +1,15 @@
-
 const UPDATE_CONTENT_VALUE = 'UPDATE_CONTENT_VALUE';
 
 export const updateContentValue = content => ({
-    type: UPDATE_CONTENT_VALUE,
-    content
-  })
+  type: UPDATE_CONTENT_VALUE,
+  content
+});
 
 export function contentValue(state = '', action) {
   switch (action.type) {
     case UPDATE_CONTENT_VALUE:
-      return action.content
+      return action.content;
     default:
-      return state
+      return state;
   }
 }
