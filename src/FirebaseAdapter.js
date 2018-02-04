@@ -15,7 +15,7 @@ const config = {
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGE_SENDER_ID
 };
 
-class Firebase {
+class FirebaseAdapter {
   get userId() {
     return this.fb.auth().currentUser.uid.slice(0, 6);
   }
@@ -144,4 +144,4 @@ class Firebase {
   }
 }
 
-export default Firebase;
+export default FirebaseAdapter;

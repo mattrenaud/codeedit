@@ -1,15 +1,22 @@
 import { setLanguageSelection } from "./Language.state";
 import { updateContentValue } from "./CodeEditor.state";
 
+import { encode, decode } from "./parseUrl";
+
 class URLAdapter {
   languageSelection = "";
   contentValue = "";
 
   constructor(store) {
     this.store = store;
-    this.languageSelection = this.store.getState().languageSelection;
-    this.contentValue = this.store.getState().contentValue;
-    this.store.subscribe(() => this.onStoreUpdate());
+    setTimeout(() => {
+      const { languageSelection, contentValue } = decode(
+        document.location.search || "?"
+      );
+      this.processIncomingLanguageSelectionUpdate(languageSelection);
+      this.processIncomingContentValueUpdate(contentValue);
+      this.store.subscribe(() => this.onStoreUpdate());
+    });
   }
 
   onStoreUpdate() {
@@ -23,14 +30,12 @@ class URLAdapter {
       return;
     }
     this.languageSelection = languageSelection;
-    this.docDataRef.update({ languageSelection });
+    const newSearch = encode(this);
+    this.updateUrl(newSearch);
   }
 
   processIncomingLanguageSelectionUpdate(languageSelection) {
-    if (!languageSelection) {
-      this.docDataRef.update({ languageSelection: this.languageSelection });
-      return;
-    }
+    console.log("dd", this.languageSelection, languageSelection);
     if (this.languageSelection === languageSelection) {
       return;
     }
@@ -39,25 +44,31 @@ class URLAdapter {
   }
 
   processOutgoingContentValueUpdate(contentValue) {
+    console.log("yy", this.contentValue, contentValue);
     if (this.contentValue === contentValue) {
       return;
     }
     this.contentValue = contentValue;
-    this.docDataRef.update({ contentValue });
+    const newSearch = encode(this);
+    this.updateUrl(newSearch);
   }
 
   processIncomingContentValueUpdate(contentValue) {
-    if (!contentValue && contentValue !== "") {
-      if (this.contentValue) {
-        this.docDataRef.update({ contentValue: this.contentValue });
-      }
-      return;
-    }
     if (this.contentValue === contentValue) {
       return;
     }
     this.contentValue = contentValue;
     this.store.dispatch(updateContentValue(contentValue));
+  }
+
+  updateUrl(newSearch) {
+    if (window.location.search !== newSearch) {
+      window.history.replaceState(
+        {},
+        document.title,
+        `${window.location.pathname}${newSearch}`
+      );
+    }
   }
 }
 
