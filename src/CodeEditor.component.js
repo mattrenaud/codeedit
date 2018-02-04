@@ -31,6 +31,7 @@ class CodeEditor extends Component {
     );
     this.codeMirror.on("changes", this.changesListener);
   }
+
   unregisterChangeListener() {
     if (this.changesListener) {
       this.codeMirror.off("changes", this.changesListener);
