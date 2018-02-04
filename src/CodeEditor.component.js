@@ -19,22 +19,35 @@ import throttle from "lodash.throttle";
 class CodeEditor extends Component {
   textArea = null;
   codeMirror = null;
+  changeListener = null;
+
+  registerChangeListener() {
+    this.unregisterChangeListener();
+    const { onContentUpdate } = this.props;
+    this.changesListener = throttle(
+      ({ doc }) => onContentUpdate(doc.getValue()),
+      300,
+      { trailing: true }
+    );
+    this.codeMirror.on("changes", this.changesListener);
+  }
+
+  unregisterChangeListener() {
+    if (this.changesListener) {
+      this.codeMirror.off("changes", this.changesListener);
+      this.changesListener = null;
+    }
+  }
 
   componentDidMount() {
-    const { languageSelection: mode, onContentUpdate } = this.props;
+    const { languageSelection: mode } = this.props;
     this.codeMirror = CodeMirror.fromTextArea(this.textArea, {
       theme: "xq-light",
       lineNumbers: true,
       mode
     });
 
-    const changesListener = throttle(
-      ({ doc }) => onContentUpdate(doc.getValue()),
-      300,
-      { trailing: true }
-    );
-
-    this.codeMirror.on("changes", changesListener);
+    this.registerChangeListener();
   }
 
   render() {
@@ -43,7 +56,9 @@ class CodeEditor extends Component {
       this.codeMirror.setOption("mode", mode);
     }
     if (this.codeMirror && this.codeMirror.doc.getValue() !== contentValue) {
+      this.unregisterChangeListener();
       this.codeMirror.doc.setValue(contentValue);
+      this.registerChangeListener();
     }
     return (
       <div className="CodeEditor w-100">
