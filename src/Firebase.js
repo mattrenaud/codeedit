@@ -1,10 +1,10 @@
-import * as firebase from 'firebase';
-import swal from 'sweetalert';
-import docId from './docId';
+import * as firebase from "firebase";
+import swal from "sweetalert";
+import docId from "./docId";
 
-import { setLanguageSelection } from './Language.state';
-import { updateContentValue } from './CodeEditor.state';
-import { updateCollaborators, updateUsers } from './Collaborators.state';
+import { setLanguageSelection } from "./Language.state";
+import { updateContentValue } from "./CodeEditor.state";
+import { updateCollaborators, updateUsers } from "./Collaborators.state";
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -40,16 +40,13 @@ class Firebase {
     return this.fb.database().ref(`${docId}/users/${this.userId}`);
   }
 
-  languageSelection = '';
-  contentValue = '';
-
-  oldStateValues = {};
+  languageSelection = "";
+  contentValue = "";
 
   constructor(store) {
     this.store = store;
     this.languageSelection = this.store.getState().languageSelection;
     this.contentValue = this.store.getState().contentValue;
-    this.oldStateValues = this.stateValues;
     this.fb = firebase.initializeApp(config);
     this.fb
       .auth()
@@ -60,27 +57,27 @@ class Firebase {
   onSignedIn() {
     this.store.subscribe(() => this.onStoreUpdate());
 
-    this.docDataRef.on('value', snapshot => {
-      const { languageSelection = '', contentValue = '' } =
+    this.docDataRef.on("value", snapshot => {
+      const { languageSelection = "", contentValue = "" } =
         snapshot.val() || {};
       this.processIncomingLanguageSelectionUpdate(languageSelection);
       this.processIncomingContentValueUpdate(contentValue);
     });
 
-    this.collaboratorsRef.on('value', snapshot => {
+    this.collaboratorsRef.on("value", snapshot => {
       const colaborators = Object.keys(snapshot.val() || {});
       this.store.dispatch(updateCollaborators(colaborators));
     });
 
     this.userRef
-      .once('value')
+      .once("value")
       .then(snapshot =>
         this.getName(snapshot.val() || {}).then(name =>
           this.userRef.update({ name })
         )
       );
 
-    this.usersRef.on('value', snapshot => {
+    this.usersRef.on("value", snapshot => {
       const users = snapshot.val() || {};
       this.store.dispatch(updateUsers(users));
     });
@@ -89,12 +86,12 @@ class Firebase {
     this.collaboratorRef.set(true);
   }
 
-  async getName({ name = '' }) {
+  async getName({ name = "" }) {
     if (name) {
       return name;
     }
-    return swal('Enter a name:', {
-      content: 'input'
+    return swal("Enter a name:", {
+      content: "input"
     }).then(name => this.getName({ name }));
   }
 
@@ -133,7 +130,7 @@ class Firebase {
   }
 
   processIncomingContentValueUpdate(contentValue) {
-    if (!contentValue && contentValue !== '') {
+    if (!contentValue && contentValue !== "") {
       if (this.contentValue) {
         this.docDataRef.update({ contentValue: this.contentValue });
       }
@@ -144,18 +141,6 @@ class Firebase {
     }
     this.contentValue = contentValue;
     this.store.dispatch(updateContentValue(contentValue));
-  }
-
-  processIncomingPreseceUpdate(languageSelection) {
-    if (!languageSelection) {
-      this.docDataRef.update({ languageSelection: this.languageSelection });
-      return;
-    }
-    if (this.languageSelection === languageSelection) {
-      return;
-    }
-    this.languageSelection = languageSelection;
-    this.store.dispatch(setLanguageSelection(languageSelection));
   }
 }
 
