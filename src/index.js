@@ -9,8 +9,8 @@ import "./index.css";
 
 import App from "./App";
 
-// import FirebaseAdapter from "./FirebaseAdapter";
-import URLAdapter from "./URLAdapter";
+import FirebaseAdapter from "./FirebaseAdapter";
+// import URLAdapter from "./URLAdapter";
 
 const store = createStore(reducers);
 
@@ -21,5 +21,5 @@ render(
   document.getElementById("root")
 );
 
-// new FirebaseAdapter(store);
-new URLAdapter(store);
+// new URLAdapter(store);
+new FirebaseAdapter(store);
