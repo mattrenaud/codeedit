@@ -120,7 +120,7 @@ class Nav extends Component {
             </button>
           </div>
         </div>
-        <a className="btn btn-outline-secondary ml-4" href="/">
+        <a className="btn btn-outline-secondary ml-4" href="/new">
           New Session
         </a>
       </nav>
